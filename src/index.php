@@ -23,7 +23,19 @@ if ($requestUri === '/table' && $requestMethod === 'GET') {
 
     require_once __DIR__ . '/newUser.php';
 
-} else {
+} elseif($requestUri === '/newUser' &&
+          ($requestMethod === 'GET' || $requestMethod === 'POST')) {
+    require_once __DIR__ . '/newUser.php';
+}elseif($requestUri === '/commentEdit' &&
+        ($requestMethod === 'GET' || $requestMethod === 'POST')) {
+            require_once __DIR__ . '/commentEdit.php';
+        }elseif($requestUri === './good' &&
+                ($requestMethod === 'GET' || $requestMethod === 'POST')) {
+            require_once __DIR__ . '/good.php';
+        }
+        else{
+
+        
 
     http_response_code(404);
     echo '404 Not Found';

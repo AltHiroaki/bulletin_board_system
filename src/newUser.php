@@ -25,7 +25,10 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
     $stmt->execute();
 
     $mysqli->close();
+    header('Location: /login');
+    exit();
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -35,7 +38,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
 	</head>
 	<body>
 		<h2>ユーザ追加</h2>
-		<form action="newUser.php" method="post">
+		<form action="/newUser" method="post">
 		  ユーザ: <input type="text" name="username" /><br/>
 		  パスワード: <input type="password" name="password" /><br/>
 		  <input type="submit" />

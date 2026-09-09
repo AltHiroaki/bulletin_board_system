@@ -64,5 +64,9 @@ $mysqli->close();
 		  パスワード: <input type="password" name="password" /><br/>
 		  <input type="submit" />
 		</form>
+        <br>
+        <form action="/newUser" method="post">
+            <input type="submit" value="新規登録" />
+        </form>
 	</body>
 </html>
