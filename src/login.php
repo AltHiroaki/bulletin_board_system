@@ -11,7 +11,8 @@ if($mysqli->connect_error){
 }
 
 if(isset($_SESSION['user_id'])) {
-    echo "既にログインしています";
+    echo "既にログインしています。";
+    echo "あなたのユーザーネームは". $_SESSION['user_name'] . "です。";
     exit();
 }
 
@@ -44,7 +45,7 @@ $result = $stmt->get_result();
 if($row = $result->fetch_assoc()){
     $_SESSION['user_id'] = htmlspecialchars($row['id'], ENT_QUOTES, 'UTF-8');
     $_SESSION['user_name'] = htmlspecialchars($row['user_name'], ENT_QUOTES, 'UTF-8');
-    echo $_SESSION['user_name'];
+    header('Location: http://localhost:8080/login');
 }
 
 $mysqli->close();

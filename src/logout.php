@@ -10,6 +10,7 @@ if(isset($button)){
     if(isset($_SESSION['user_name'])){
         session_destroy();
         echo "セッションを破棄しました。";
+		header('Location: http://localhost:8080/logout');
     }
 }else{
     echo $_SESSION['user_name'];
