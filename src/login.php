@@ -33,20 +33,18 @@ $password = $_POST['password'];
 $password_hash = hash("sha256", $password);
 
 
-$sql = "SELECT * FROM trx_users";
-$result = $mysqli->query($sql);
 
 
-while($row = $result->fetch_assoc() ){
+$sql = "SELECT * FROM trx_users WHERE user_name = ? AND password = ?";
+$stmt = $mysqli->prepare($sql);
+$stmt->bind_param("ss", $username, $password_hash);
+$stmt->execute();
+$result = $stmt->get_result();
 
-        $id = htmlspecialchars($row['id'], ENT_QUOTES, 'UTF-8');
-        $name = htmlspecialchars($row['user_name'], ENT_QUOTES, 'UTF-8');
-        $pass = htmlspecialchars($row['password'], ENT_QUOTES, 'UTF-8');
-        if(($name == $username) && ($pass == $password_hash)){
-            $_SESSION['user_id'] = $id;
-            $_SESSION['user_name'] = $username;
-            echo $_SESSION['user_name'];
-        }
+if($row = $result->fetch_assoc()){
+    $_SESSION['user_id'] = htmlspecialchars($row['id'], ENT_QUOTES, 'UTF-8');
+    $_SESSION['user_name'] = htmlspecialchars($row['user_name'], ENT_QUOTES, 'UTF-8');
+    echo $_SESSION['user_name'];
 }
 
 $mysqli->close();
