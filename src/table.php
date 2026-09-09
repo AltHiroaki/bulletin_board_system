@@ -19,6 +19,15 @@ if (isset($_SESSION['user_id'])) {
   echo "<button type='submit'>送信</button>";
   echo "</form>";
   echo "</section>";
+  echo "<section>";
+  echo "<form action='/logout' method='post'>";
+  echo "<input type='hidden' name='csrf_token' value='{$csrf_token}' />";
+  echo "<button type='submit'>ログアウト</button>";
+  echo "</form>";
+  echo "</section>";
+} else {
+    header('Location: /login');
+    exit();
 }
 
 $mysqli = new mysqli('localhost', 'intern', 'password', 'test');

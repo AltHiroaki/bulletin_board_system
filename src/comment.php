@@ -55,5 +55,5 @@ if($mysqli->connect_error){
 
 
 // 登録後は一覧画面に戻すと自然です
-header('Location: http://localhost:8080/table');
+header('Location:/table');
 exit();

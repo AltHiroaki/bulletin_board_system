@@ -10,6 +10,7 @@ if ($requestUri === '/table' && $requestMethod === 'GET') {
 } elseif ($requestUri === '/login' &&
           ($requestMethod === 'GET' || $requestMethod === 'POST')) {
 
+    $requestURI = $_SERVER['REQUEST_URI'];
     require_once __DIR__ . '/login.php';
 
 } elseif ($requestUri === '/logout' && 
