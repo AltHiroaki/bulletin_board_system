@@ -6,14 +6,10 @@ session_start();
  * セッションが確立しているとき、セッションを破棄してログアウトする処理を書いてください
  */
 $button = $_POST['logout'];
-if(isset($button)){
-    if(isset($_SESSION['user_name'])){
-        session_destroy();
-		header('Location: /login');
-    }
-}else{
-    echo $_SESSION['user_name'];
-}
+
+session_destroy();
+echo "セッションを破棄しました。";
+header('Location: /login');
 
 ?>
 
