@@ -83,9 +83,12 @@ $escapecomment_id = htmlspecialchars($comment_id, ENT_QUOTES, 'UTF-8');
 
 		<form action="/commentEdit" method="post">
 
+      元コメント:
+		  <?php echo $escapecomment; ?>
+      <br/>
 		  コメント:
-		  <input type="text" name="text" value="<?php echo $escapecomment; ?>" />
-		  <br>
+		  <input type="text" name="text" value="" />
+		  <br/>
 		  <input type="hidden" name="comment_id" value="<?php echo $escapecomment_id; ?>" />
 		  <input type="hidden" name="csrf_token" value="<?php echo $csrf_token; ?>" />
 		  <input type="hidden" name="action" value="update" />
